@@ -5,7 +5,7 @@
  *
  */
 
-var prompt = require('../lib/prompt');
+var prompt = require('prompt');
 
 //
 // Start the prompt
@@ -22,7 +22,12 @@ var obj = {
     sound: {
       description: 'What sound does this animal make?',
       ask: function () {
-      }
+        return (prompt.history('animal').value === 'dog');
+      },
+      default: false,
+    },
+    t: {
+      description: 't',
     }
   }
 };
@@ -36,6 +41,7 @@ prompt.get(obj, function (err, result) {
   // Log the results.
   //
   console.log('Command-line input received:');
-  console.log('  email: ' + result.email);
-  console.log('  password: ' + result.password);
+  console.log('  animal: ' + result.animal);
+  console.log('  sound: ' + result.sound);
+  console.log('  t: ' + result.t);
 });
